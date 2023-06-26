@@ -38,8 +38,27 @@ const resolvers = {
             }
             const token = signToken(user);
             return {token, user};
-        }
+        },
 
+        saveBook: async (parent, { input }, context) => {
+            const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { savedBooks: input } },
+                { new: true, runValidators: true }
+            );
+            
+            if (!user) {
+                return {};
+            }
+
+            return {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                password: user.password,
+                savedBooks: user.savedBooks,
+            };
+        }
     }
 }
 
