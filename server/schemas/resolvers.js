@@ -58,6 +58,26 @@ const resolvers = {
                 password: user.password,
                 savedBooks: user.savedBooks,
             };
+        },
+
+        removeBook: async (parent, {bookId}, context) => {
+            const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { savedBooks: { bookId } } },
+                { new: true }
+            );
+
+            if (!user) {
+                return {};
+            }
+
+            return {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                password: user.password,
+                savedBooks: user.savedBooks,
+            }
         }
     }
 }
