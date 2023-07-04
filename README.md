@@ -3,7 +3,7 @@
 ## Description 
 For the module 21 assignment I refactored a Google Books API search engine. The site was built using React, MongoDB, Node.js and Express.js. I replaced the Express API with Apollo Server and GraphQL to use queries and mutations to fetch and modify data.
 
-The deployed page can be found here: 
+The deployed page can be found here: https://serene-acadia-74846-e38d9684cf21.herokuapp.com/
 
 ## Usage
 A user can search for books using the Google Books API and save books to their favorites. Users can view their favorite list and delete books from the list.
